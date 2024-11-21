@@ -11,8 +11,15 @@ export const login = async (req: Request, res: Response) => {
   }
 
   if (!user) {
-    return res.status(400).json({ message: 'user not found'});
+    return res.status(400).json({ message: 'User not found' });
   }
+
+  const validPassword = await bcrypt.compare(password, user.password);
+
+  if (!validPassword) {
+    return res.status(400).json({ message: 'Invalid password'});
+  }
+
   // TODO: If the user exists and the password is correct, return a JWT token
 };
 
