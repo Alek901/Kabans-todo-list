@@ -9,6 +9,10 @@ export const login = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ where: { username } });
   }
+
+  if (!user) {
+    return res.status(400).json({ message: 'user not found'});
+  }
   // TODO: If the user exists and the password is correct, return a JWT token
 };
 
