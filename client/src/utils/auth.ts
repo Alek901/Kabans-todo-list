@@ -28,11 +28,15 @@ class AuthService {
   }
 
   login(idToken: string) {
+    localStorage.setItem('id_token', idToken);
+    window.location.assign('/');
     // TODO: set the token to localStorage
     // TODO: redirect to the home page
   }
 
   logout() {
+    localStorage.removeItem('id_token');
+    window.location.assign('/login');
     // TODO: remove the token from localStorage
     // TODO: redirect to the login page
   }
