@@ -5,8 +5,10 @@ const login = async (userInfo: UserLogin) => {
     method: 'POST',
     headers: {
       'content-Type': 'application/json',
-    }
-  })
+    },
+    body: JSON.stringify(userInfo),
+    credentials: 'include'
+  });
   // TODO: make a POST request to the login route
 }
 
