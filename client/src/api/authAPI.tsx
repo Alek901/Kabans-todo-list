@@ -9,6 +9,12 @@ const login = async (userInfo: UserLogin) => {
     body: JSON.stringify(userInfo),
     credentials: 'include'
   });
+
+  if (!response.ok) {
+    thow new Error('Login failed');
+  }
+
+  return await response.json();
   // TODO: make a POST request to the login route
 }
 
