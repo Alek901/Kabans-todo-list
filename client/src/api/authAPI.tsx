@@ -1,7 +1,7 @@
 import { UserLogin } from "../interfaces/UserLogin";
 
 const login = async (userInfo: UserLogin) => {
-  const  response = await fetch('/api/auth/login'. {
+  const  response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
       'content-Type': 'application/json',
@@ -11,7 +11,7 @@ const login = async (userInfo: UserLogin) => {
   });
 
   if (!response.ok) {
-    thow new Error('Login failed');
+    throw new Error('Login failed');
   }
 
   return await response.json();
