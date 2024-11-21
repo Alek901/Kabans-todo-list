@@ -20,6 +20,12 @@ export const login = async (req: Request, res: Response) => {
     return res.status(400).json({ message: 'Invalid password'});
   }
 
+  const token = jwt.sign(
+    { id: username.id, username: username },
+    process.env.JWT_SECRET || 'your-secret-key',
+    { expiresIn: '1h' }
+  );
+
   // TODO: If the user exists and the password is correct, return a JWT token
 };
 
